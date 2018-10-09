@@ -1,13 +1,10 @@
 ## Usage
 
 ```
-docker run -d \
-  --name=block-processor \
-  -v <failed block storage>:/blocks \
-  -e HOST=<https endpoint> \
-  -e HOST_PATH=<https path> \
-  -e FILTER=<| FS array of valid returns> \
-  -e PGID=<UID> -e PUID=<GUID> \
-  -p 3000:3000 \
-  nanoflip/block-processor:latest
+docker run --rm -i \
+  --name=lmdb-to-redis \
+  -v <path to RaiBlocks>:/nano \
+  -e REDIS_HOST=<redis host> \
+  -e REDIS_PORT=<redis port> \
+  nanoflip/lmdb-to-redis:latest
 ```
